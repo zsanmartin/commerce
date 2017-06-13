@@ -52,9 +52,11 @@ class PluginItemDeriver extends DeriverBase implements ContainerDeriverInterface
    */
   public function getDerivativeDefinitions($base_plugin_definition) {
     $plugin_types = [
-      'condition' => $this->t('Conditions'),
-      'action' => $this->t('Action'),
+      'commerce_condition' => $this->t('Condition'),
       'commerce_promotion_offer' => $this->t('Promotion offer'),
+      // Promotion conditions have been removed, but a field type is still exposed here to allow
+      // hook_commerce_promotion_update_8202() to convert the field definition.
+      // @todo Remove in 8.x-2.1
       'commerce_promotion_condition' => $this->t('Promotion condition'),
     ];
     // Core has no way to list plugin types, so each referenceable plugin
